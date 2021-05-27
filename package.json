@@ -12,6 +12,7 @@
   "author": "LariCode <larissa.santosazevedo@hotmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "@types/faker": "^5.5.5",
     "@types/jest": "^26.0.23",
     "@types/node": "^15.6.1",
     "@typescript-eslint/eslint-plugin": "^4.25.0",
@@ -21,6 +22,7 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^5.1.0",
     "eslint-plugin-standard": "^5.0.0",
+    "faker": "^5.5.3",
     "git-commit-msg-linter": "^3.1.0",
     "husky": "^6.0.0",
     "jest": "^27.0.1",
