@@ -13,6 +13,7 @@
   "author": "LariCode <larissa.santosazevedo@hotmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "@testing-library/react": "^11.2.7",
     "@types/axios": "^0.14.0",
     "@types/faker": "^5.5.5",
     "@types/jest": "^26.0.23",
