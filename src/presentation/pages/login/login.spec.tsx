@@ -117,7 +117,6 @@ describe("Login Component", () => {
     const { sut } = makeSut();
 
     populateEmailField(sut);
-
     populatePasswordField(sut);
 
     const submitButton = sut.getByTestId("submit") as HTMLButtonElement;
@@ -135,11 +134,18 @@ describe("Login Component", () => {
 
   test("Should call Authentication with correct values", () => {
     const { sut, authenticationSpy } = makeSut();
-
     const email = faker.internet.email();
     const password = faker.internet.password();
 
     simulateValidSubmit(sut, email, password);
     expect(authenticationSpy.params).toEqual({ email, password });
+  });
+
+  test("Should call Authentication only once", () => {
+    const { sut, authenticationSpy } = makeSut();
+    
+    simulateValidSubmit(sut);
+    simulateValidSubmit(sut);
+    expect(authenticationSpy.callsCount).toBe(1);
   });
 });
