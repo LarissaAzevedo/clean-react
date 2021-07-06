@@ -5,4 +5,6 @@ import { Router } from "@/presentation/components";
 
 import '@/presentation/styles/global.scss'
 
-ReactDOM.render(<Router />, document.getElementById("main"));
+import { makeLogin } from "./factories/pages/login/login-factory";
+
+ReactDOM.render(<Router makeLogin={makeLogin} />, document.getElementById("main"));
