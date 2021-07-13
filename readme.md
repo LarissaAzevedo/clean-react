@@ -1,0 +1,1 @@
+[![Build Status](https://travis-ci.com/LarissaAzevedo/clean-react.svg?branch=main)](https://travis-ci.com/LarissaAzevedo/clean-react)
