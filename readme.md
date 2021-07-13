@@ -1,1 +1,2 @@
 [![Build Status](https://travis-ci.com/LarissaAzevedo/clean-react.svg?branch=main)](https://travis-ci.com/LarissaAzevedo/clean-react)
+[![Coverage Status](https://coveralls.io/repos/github/LarissaAzevedo/clean-react/badge.svg?branch=main)](https://coveralls.io/github/LarissaAzevedo/clean-react?branch=main)
