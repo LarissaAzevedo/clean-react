@@ -1,9 +1,9 @@
-import { Validation } from "@/presentation/protocols/validation";
+import { Validation } from '@/presentation/protocols/validation'
 
 export class ValidationStub implements Validation {
-  errorMessage: string;
+  errorMessage: string
 
-  validate(fieldName: string, fieldValue: string): string {
-    return this.errorMessage;
+  validate (fieldName: string, fieldValue: string): string {
+    return this.errorMessage
   }
 }

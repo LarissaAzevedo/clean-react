@@ -1,7 +1,7 @@
-@import "../styles/colors.scss";
+@import '../styles/colors.scss';
 
 * {
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 14px;
   padding: 0;
   margin: 0;
@@ -12,8 +12,8 @@ body {
   background-color: $background;
 }
 
-input[type="password"],
-input[type="email"] {
+input[type='password'],
+input[type='email'] {
   border: 1px solid $primaryLight;
   line-height: 40px;
   border-radius: 4px;

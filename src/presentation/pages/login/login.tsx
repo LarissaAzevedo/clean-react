@@ -1,89 +1,89 @@
-import React, { useState, useEffect } from "react";
-import { Link, useHistory } from "react-router-dom";
-import { Header, Footer, Input, FormStatus } from "@/presentation/components";
-import Context from "@/presentation/contexts/form/form-context";
-import { Validation } from "@/presentation/protocols/validation";
+import React, { useState, useEffect } from 'react'
+import { Link, useHistory } from 'react-router-dom'
+import { Header, Footer, Input, FormStatus } from '@/presentation/components'
+import Context from '@/presentation/contexts/form/form-context'
+import { Validation } from '@/presentation/protocols/validation'
 
-import Styles from "./login-styles.scss";
-import { Authentication } from "@/domain/usecases";
+import Styles from './login-styles.scss'
+import { Authentication } from '@/domain/usecases'
 
 type Props = {
-  validation: Validation;
-  authentication: Authentication;
-};
+  validation: Validation
+  authentication: Authentication
+}
 
 const Login: React.FC<Props> = ({ validation, authentication }: Props) => {
-  const history = useHistory();
+  const history = useHistory()
   const [state, setState] = useState({
     isLoading: false,
-    email: "",
-    password: "",
-    emailError: "",
-    passwordError: "",
-    mainError: "",
-  });
+    email: '',
+    password: '',
+    emailError: '',
+    passwordError: '',
+    mainError: ''
+  })
 
   useEffect(() => {
     setState({
       ...state,
-      emailError: validation.validate("email", state.email),
-      passwordError: validation.validate("password", state.password),
-    });
-  }, [state.email, state.password]);
+      emailError: validation.validate('email', state.email),
+      passwordError: validation.validate('password', state.password)
+    })
+  }, [state.email, state.password])
 
   const handleSubmit = async (
     event: React.FormEvent<HTMLFormElement>
   ): Promise<void> => {
     try {
-      event.preventDefault();
+      event.preventDefault()
       if (state.isLoading || state.emailError || state.passwordError) {
-        return;
+        return
       }
       setState({
         ...state,
-        isLoading: true,
-      });
+        isLoading: true
+      })
 
       const account = await authentication.auth({
         email: state.email,
-        password: state.password,
-      });
-      localStorage.setItem("accessToken", account.accessToken);
-      history.replace("/");
+        password: state.password
+      })
+      localStorage.setItem('accessToken', account.accessToken)
+      history.replace('/')
     } catch (error) {
       setState({
         ...state,
         isLoading: false,
-        mainError: error.message,
-      });
+        mainError: error.message
+      })
     }
-  };
+  }
 
   return (
     <div className={Styles.login}>
       <Header />
       <Context.Provider value={{ state, setState }}>
         <form
-          data-testid="form"
+          data-testid='form'
           className={Styles.form}
           onSubmit={handleSubmit}
         >
           <h2>Login</h2>
-          <Input type="email" name="email" placeholder="Digite seu e-mail" />
+          <Input type='email' name='email' placeholder='Digite seu e-mail' />
           <Input
-            type="password"
-            name="password"
-            placeholder="Digite sua senha"
+            type='password'
+            name='password'
+            placeholder='Digite sua senha'
           />
           <button
-            data-testid="submit"
+            data-testid='submit'
             disabled={!!state.emailError || !!state.passwordError}
-            type="submit"
+            type='submit'
             className={Styles.submit}
           >
             Entrar
           </button>
-          <Link to="/signup" data-testid="signup" className={Styles.link}>
+          <Link to='/signup' data-testid='signup' className={Styles.link}>
             Criar conta
           </Link>
           <FormStatus />
@@ -91,7 +91,7 @@ const Login: React.FC<Props> = ({ validation, authentication }: Props) => {
       </Context.Provider>
       <Footer />
     </div>
-  );
-};
+  )
+}
 
-export default Login;
+export default Login
