@@ -1,8 +1,8 @@
 import React from 'react'
 import faker from 'faker'
 import { RenderResult, render, cleanup, fireEvent, waitFor } from '@testing-library/react'
-import SignUp from './signup'
 import { Helper, ValidationStub } from '@/presentation/test'
+import SignUp from './signup'
 
 type SutTypes = {
   sut: RenderResult
@@ -25,7 +25,7 @@ const simulateValidSubmit = async (
   sut: RenderResult,
   name = faker.name.findName(),
   email = faker.internet.email(),
-  password = faker.internet.password(),
+  password = faker.internet.password()
 ): Promise<void> => {
   Helper.populateField(sut, 'name', name)
   Helper.populateField(sut, 'email', email)
@@ -35,11 +35,6 @@ const simulateValidSubmit = async (
   const form = sut.getByTestId('form')
   fireEvent.submit(form)
   await waitFor(() => form)
-}
-
-const testElementExists = (sut: RenderResult, fieldName: string): void => {
-  const el = sut.getByTestId(fieldName)
-  expect(el).toBeTruthy()
 }
 
 describe('SignUp Component', () => {
@@ -131,6 +126,6 @@ describe('SignUp Component', () => {
     const { sut } = makeSut()
 
     await simulateValidSubmit(sut)
-    testElementExists(sut, 'spinner')
+    Helper.testElementExists(sut, 'spinner')
   })
 })
