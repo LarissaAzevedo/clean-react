@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useHistory } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { AddAccount, SaveAccessToken } from '@/domain/usecases'
 import { Header, Footer, Input, FormStatus } from '@/presentation/components'
 import Context from '@/presentation/contexts/form/form-context'
@@ -80,9 +80,9 @@ const SignUp: React.FC<Props> = ({ validation , addAccount, saveAccessToken }: P
           <button data-testid="submit" disabled={!!state.nameError || !!state.emailError || !!state.passwordError || !!state.passwordConfirmationError} type='submit' className={Styles.submit}>
             Entrar
           </button>
-          <span className={Styles.link}>
+          <Link to='/login' replace data-testid='login-link' className={Styles.link}>
             Voltar para login
-          </span>
+          </Link>
           <FormStatus />
         </form>
       </Context.Provider>
