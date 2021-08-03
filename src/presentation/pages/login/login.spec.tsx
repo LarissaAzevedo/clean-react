@@ -169,7 +169,7 @@ describe('Login Component', () => {
 
   test('Should go to signup page', () => {
     const { sut } = makeSut()
-    const register = sut.getByTestId('signup')
+    const register = sut.getByTestId('signup-link')
     fireEvent.click(register)
 
     expect(history.length).toBe(2)
